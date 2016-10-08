@@ -1,0 +1,24 @@
+cache:
+  paths:
+  - vendor/
+
+
+before_script:
+  - curl --silent --show-error https://getcomposer.org/installer | php
+  - php composer.phar install
+
+#build step is only to speed up the other steps
+build:
+  stage: build
+  script:
+    - echo "done"
+
+test:php5.6:
+  image: php:5.6
+  stage: test
+  script:
+    - curl --silent --show-error https://phar.phpunit.de/phpunit.phar
+    - chmod +x phpunit.phar
+    - phpunit.phar
+
+
