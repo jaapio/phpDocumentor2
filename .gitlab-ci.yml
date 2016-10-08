@@ -4,6 +4,7 @@ cache:
 
 
 before_script:
+  - apt-get update && apt-get install -y zip
   - curl --silent --show-error https://getcomposer.org/installer | php
   - php composer.phar install
 
