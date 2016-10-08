@@ -10,6 +10,7 @@ before_script:
 #build step is only to speed up the other steps
 build:
   stage: build
+  image: php:5.6
   script:
     - echo "done"
 
