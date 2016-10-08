@@ -56,12 +56,6 @@
         "bin-dir":"bin/"
     },
     "bin": ["bin/phpdoc.php", "bin/phpdoc"],
-    "scripts": {
-        "post-install-cmd": [ "php bin/phing build:dependencies:install" ],
-        "test": [ "./bin/phpunit --colors=always -v" ],
-        "coverage": [ "./bin/phpunit --colors=always -v --coverage-html build/coverage" ],
-        "style": [ "./bin/phpcs --colors -p" ]
-    },
     "extra": {
         "branch-alias": {
             "dev-develop": "3.0-dev"
