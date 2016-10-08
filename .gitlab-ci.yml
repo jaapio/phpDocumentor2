@@ -21,6 +21,6 @@ test:php5.6:
   script:
     - curl -L --silent --show-error https://phar.phpunit.de/phpunit.phar
     - chmod +x phpunit.phar
-    - phpunit.phar
+    - php phpunit.phar
 
 
