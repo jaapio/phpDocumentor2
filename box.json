@@ -39,7 +39,7 @@
                 "vendor/phpdocumentor/reflection/src",
                 "vendor/phpdocumentor/reflection-docblock/src",
                 "vendor/phpoption/phpoption/src",
-                "vendor/pimple/pimple/lib",
+                "vendor/pimple/pimple/src",
                 "vendor/psr/log/Psr",
                 "vendor/silex/api",
                 "vendor/symfony",
