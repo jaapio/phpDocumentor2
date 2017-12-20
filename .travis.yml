@@ -42,6 +42,6 @@ deploy:
   file: "phpDocumentor.phar"
   skip_cleanup: true
   on:
-    repo: phpDocumentor/phpDocumentor2
+    repo: jaapio/phpDocumentor2
     tags: true
     php: 7.0
