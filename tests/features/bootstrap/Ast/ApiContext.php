@@ -13,6 +13,7 @@
 namespace phpDocumentor\Behat\Contexts\Ast;
 
 use Behat\Behat\Context\Context;
+use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\PyStringNode;
 use phpDocumentor\Descriptor\ArgumentDescriptor;
 use phpDocumentor\Descriptor\ClassDescriptor;
@@ -20,6 +21,7 @@ use phpDocumentor\Descriptor\Collection;
 use phpDocumentor\Descriptor\ConstantDescriptor;
 use phpDocumentor\Descriptor\DescriptorAbstract;
 use phpDocumentor\Descriptor\FileDescriptor;
+use phpDocumentor\Descriptor\FunctionDescriptor;
 use phpDocumentor\Descriptor\MethodDescriptor;
 use phpDocumentor\Descriptor\Tag\ParamDescriptor;
 use phpDocumentor\Descriptor\Tag\ReturnDescriptor;
@@ -500,5 +502,24 @@ class ApiContext extends BaseContext implements Context
 
         Assert::assertInstanceOf(MethodDescriptor::class, $match);
         Assert::assertNotNull($match->getArguments()->get($argument));
+    }
+
+    /**
+     * @Then /^a function named "([^"]*)" must exist with argument \$(.*) of type (.*)$/
+     */
+    public function fileMustContainAFunctionNamedWithArgumentFooOfTypeInt($functionName, $argumentName, $type)
+    {
+        /** @var Collection $functions */
+        $functions = $this->getAst()->getIndexes()->get('functions');
+
+        /** @var FunctionDescriptor $function */
+        $function = $functions->get($functionName);
+
+        Assert::assertCount(1, $function->getArguments())
+
+        /** @var ArgumentDescriptor $argument */
+        $argument = $function->getArguments()->get($argumentName);
+        Assert::assertInstanceOf(ArgumentDescriptor::class, $argument);
+        Assert::assertEquals($type, $argument->getTypes());
     }
 }
